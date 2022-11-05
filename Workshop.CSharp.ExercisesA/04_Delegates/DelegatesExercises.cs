@@ -5,7 +5,7 @@ using Workshop.Common;
 
 namespace Workshop.CSharp.CSharp2.ExercisesB
 {
-//    [TestClass]
+    [TestClass]
     public class DelegatesExercises
     {
         /// <summary>
@@ -23,7 +23,79 @@ namespace Workshop.CSharp.CSharp2.ExercisesB
         /// Napisac kod testujacy dzialanie metod.
         /// </summary>
         [TestMethod]
-        public void Delegates()  {  }
+        public void Delegates()  {
+
+            //metoda list
+
+            var list = new List<string> { "one", "two", "three", "four", "five", "six" };
+
+            list.Sort((a,b)=>a.Length>b.Length?1:(a.Length<b.Length?-1:0));
+
+            Console.WriteLine(string.Join(",", list));
+
+
+
+            //metoda where
+
+
+            var list2 = new List<int> { 1, 2, 3, 4, 5 };
+            var result = Where(list2, item => item > 2);
+            Console.WriteLine(string.Join(",", result));
+
+            var result2 = First(list2, item => item > 2);
+            Console.WriteLine(string.Join(",", result2));
+
+
+
+            //Task część została zamieniona na lambdę u góry
+
+            //public static int Compare(string a, string b)
+            //{
+            //    if (a.Length>b.Length)
+            //    {
+            //        return 1;
+            //    }
+            //    else if (a.Length<b.Length)
+            //    {
+            //        return -1;
+            //    }
+
+            //    return 0;
+
+            //}
+
+            List<T> Where<T>(List<T> items, Predicate<T> predicate)
+        {
+            //metoda where
+
+            var result = new List<T>();
+
+            foreach (var item in items)
+            {
+                if (predicate(item))
+                {
+                    result.Add(item);
+                }
+
+
+                return result;
+
+            }
+
+        }
+
+            List<T> First<T>(List<T> items, Func<Task, bool> predicate){
+                foreach (var item in items)
+                {
+                    if (predicate(item))
+                    {
+                        return item;
+                    }
+                }
+            }
+
+    }
+
 
 
 
@@ -38,7 +110,54 @@ namespace Workshop.CSharp.CSharp2.ExercisesB
         /// Napisac kod testujacy dzialanie zdarzenia.
         /// </summary>
         [TestMethod]
-        public void Events()  {  }
+        public void Events()
+        {
+
+            var customer = new Customer();
+            customer.PropertyChanged += (sender, e) =>
+            {
+                Console.WriteLine("Zmieniła się włąściwość{0}", e.PropertyName);
+            };
+
+            customer.Name = "Paweł";
+            customer.Name += "!";
+            customer.Address = "La Calamin";
+
+        }
+
+        class Customer
+        {
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            private string _name;
+            public string Name
+            {
+                get => _name;
+                set
+                {
+                    _name = value;
+                    OnPropertyChange(new PropertyChangingEventArgs("Name"));
+                }
+            }
+
+            private string _address;
+            public string Address {
+                get => _address;
+                set {
+                    _address = value;
+                    OnPropertyChange(new PropertyChangingEventArgs("Address"));
+                }
+
+            }
+
+            private void OnPropertyChange(PropertyChangingEventArgs args) {
+                if (PropertyChanged!= null)
+                {
+                    PropertyChanged(this, args);
+                }
+            }
+
+        }
 
     }
 }

@@ -14,8 +14,21 @@ namespace Workshop.CSharp.Introduction.ExercisesB
         /// "
         /// Uwaga: skorzystac z metody int.Parse do zamiany string na int.
         /// </summary>
+        /// 
         [TestMethod]
         public void ConsoleDialog() {
+
+            //moja wersja
+            //Console.WriteLine("Podaj pierwszą liczbę:");
+            //var firstNumber = Convert.ToInt32(Console.ReadLine());
+       
+            //Console.WriteLine("Podaj drugą liczbę:");
+            //var secondNumber = Convert.ToInt32(Console.ReadLine());
+
+            //var wynik = firstNumber + secondNumber;
+
+            //Console.WriteLine($"Po dodaniu wynik dwóch liczb wynisi: {wynik}");
+
 
             Console.WriteLine("Podaj pierwszą liczbę:");
             string a = Console.ReadLine();
@@ -33,6 +46,22 @@ namespace Workshop.CSharp.Introduction.ExercisesB
         [TestMethod]
         public void ConsoleDialogInLoop() {
 
+
+            //moje rozwiązanie
+            //bool stopCounting = true;
+
+            //while (stopCounting)
+            //{
+            //    Console.WriteLine("Czy liczyć dalej?");
+            //    var endCounting = Console.ReadLine();
+
+            //    if (endCounting == "nie")
+            //    {
+            //        stopCounting = false;
+            //    }
+            //}
+
+
             bool endCounting = false;
 
             while (!endCounting)
@@ -40,7 +69,8 @@ namespace Workshop.CSharp.Introduction.ExercisesB
                 Console.WriteLine("Czy liczyć dalej?");
                 endCounting = Console.ReadLine() == "nie";
 
-                if (!endCounting) {
+                if (!endCounting)
+                {
                     ConsoleDialog();
                 }
             }
@@ -57,9 +87,9 @@ namespace Workshop.CSharp.Introduction.ExercisesB
 
             //tutaj algorytm testujący, zadeklarowana testowa tablica i wywołana metoda i wyświetlony wynik
 
-            int[] array = new int[] { 3, 10, -9, 8, 3};
+            var intArray = new int[] { 3, 10, -9, 8, 3, 0};
 
-            int result = SumPositiveNumbers(array);
+            int result = SumPositiveNumbers(intArray);
 
             Console.WriteLine("Powinno wyjść " + 24 + " a wyszło " + result);
 
@@ -67,20 +97,23 @@ namespace Workshop.CSharp.Introduction.ExercisesB
 
         }
 
-        public int SumPositiveNumbers(int[] numbers) {
+        public int SumPositiveNumbers(params int[] numbersArray) {
 
-            int sum = 0;
+            //właściwy algorytm w tej metodzie do użycia zewnątrzengo
 
-            foreach (var number in numbers)
+            var wynik = 0;
+
+            foreach (var item in numbersArray)
             {
-                if (number>0)
+                if (item>=0)
                 {
-                    sum += number;
+                    wynik +=item;
                 }
             }
 
-            return sum;
-            //właściwy algorytm w tej metodzie
+            return wynik;
+
+            //UWAGA: dodając warunek do if pamiętać że dodajemy pojedynczy element tablicy (item) a nie całą tablicę(numbersArray[item])!!!tak samo jak do wyniku dodajemy osobną wartość JEDNEGO elementu tablicy...inaczej, dostajemy "System.IndexOutOfRangeException". Przez niedopatrzenie i pośpiech łatwo wrzucić tablicę, więc skupienie!!!
 
         }
 
