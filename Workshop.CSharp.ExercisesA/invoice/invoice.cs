@@ -29,7 +29,7 @@ using Workshop.CSharp.ExercisesA.invoice;
 
 //i) Cena oraz ilość nie może być ujemna.
 
-//j) Item zawiera statyczną metodę int decimal SumItems(int[] items) która zwróci całkowitą sumę elementów (ilość * cena dla każdego z el.)
+//j) Item zawiera statyczną metodę decimal SumItems(Item[] items) która zwróci całkowitą sumę cen wszystkich pozycji faktury (ilość * cena dla każdego z el.)
 
 //k) Faktura zawiera statyczną metodę która przyjmuje fakturę przechodzi po jej elementach i próbuje ją zoptymalizować, tzn. jeśli na fakturze mamy elementy [ {Id: 1, Name: "spodnie"}, { Id: 2, Name: "spodnie"}, { Id: 3, Name: "czapka"}, { Id: 4, Name: "spodnie"} ] to dostaniemy wynik który jest słownikiem: { "spodnie": [1, 2, 4], "czapka":[3]}
 

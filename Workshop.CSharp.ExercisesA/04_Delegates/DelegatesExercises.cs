@@ -5,7 +5,7 @@ using Workshop.Common;
 
 namespace Workshop.CSharp.CSharp2.ExercisesB
 {
-    [TestClass]
+    //[TestClass]
     public class DelegatesExercises
     {
         /// <summary>
@@ -27,7 +27,7 @@ namespace Workshop.CSharp.CSharp2.ExercisesB
 
             //metoda list
 
-            var list = new List<string> { "one", "two", "three", "four", "five", "six" };
+            var list = new List<string> { "Belgium", "USA", "Canada", "Peru", "Malta", "Gran Canaria" };
 
             list.Sort((a,b)=>a.Length>b.Length?1:(a.Length<b.Length?-1:0));
 
@@ -38,7 +38,7 @@ namespace Workshop.CSharp.CSharp2.ExercisesB
             //metoda where
 
 
-            var list2 = new List<int> { 1, 2, 3, 4, 5 };
+            var list2 = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             var result = Where(list2, item => item > 2);
             Console.WriteLine(string.Join(",", result));
 
@@ -47,7 +47,7 @@ namespace Workshop.CSharp.CSharp2.ExercisesB
 
 
 
-            //Task część została zamieniona na lambdę u góry
+            //Tak część została zamieniona na lambdę u góry
 
             //public static int Compare(string a, string b)
             //{
@@ -78,13 +78,15 @@ namespace Workshop.CSharp.CSharp2.ExercisesB
                 }
 
 
+               
+
+            }
+
                 return result;
 
             }
 
-        }
-
-            List<T> First<T>(List<T> items, Func<Task, bool> predicate){
+            T First<T>(List<T> items, Func<T, bool> predicate){
                 foreach (var item in items)
                 {
                     if (predicate(item))
@@ -92,6 +94,8 @@ namespace Workshop.CSharp.CSharp2.ExercisesB
                         return item;
                     }
                 }
+
+                return default;
             }
 
     }
@@ -116,7 +120,7 @@ namespace Workshop.CSharp.CSharp2.ExercisesB
             var customer = new Customer();
             customer.PropertyChanged += (sender, e) =>
             {
-                Console.WriteLine("Zmieniła się włąściwość{0}", e.PropertyName);
+                Console.WriteLine("Zmieniła się właściwość{0}", e.PropertyName);
             };
 
             customer.Name = "Paweł";
@@ -136,25 +140,33 @@ namespace Workshop.CSharp.CSharp2.ExercisesB
                 set
                 {
                     _name = value;
-                    OnPropertyChange(new PropertyChangingEventArgs("Name"));
+                    OnPropertyChange(new PropertyChangedEventArgs("Name"));
                 }
             }
 
             private string _address;
-            public string Address {
+            public string Address
+            {
                 get => _address;
-                set {
+                set
+                {
                     _address = value;
-                    OnPropertyChange(new PropertyChangingEventArgs("Address"));
+                    OnPropertyChange(new PropertyChangedEventArgs("Address"));
                 }
 
             }
 
-            private void OnPropertyChange(PropertyChangingEventArgs args) {
-                if (PropertyChanged!= null)
+            private void OnPropertyChange(PropertyChangedEventArgs args)
+            {
+                if (PropertyChanged != null)
                 {
                     PropertyChanged(this, args);
                 }
+
+                //lub skrótowo
+
+                //PropertyChanged?.Invoke(this, args);
+                  
             }
 
         }

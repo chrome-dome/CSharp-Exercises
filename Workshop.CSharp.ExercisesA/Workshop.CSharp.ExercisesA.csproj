@@ -15,18 +15,26 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="05_Objectivity\ObjectivityExercises.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Data\SampleData\DataProvider.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Remove="invoice\" />
     <None Remove="hospital\" />
+    <None Remove="xAlgExercises\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Data\SampleData\Categories.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\SampleData\Products.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="invoice\" />
     <Folder Include="hospital\" />
+    <Folder Include="xAlgExercises\" />
   </ItemGroup>
 </Project>
