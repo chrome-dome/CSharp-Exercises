@@ -5,7 +5,7 @@ using Workshop.Common;
 
 namespace Workshop.CSharp.CSharp2.ExercisesB
 {
-    //[TestClass]
+    [TestClass]
     public class DelegatesExercises
     {
         /// <summary>

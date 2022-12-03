@@ -6,7 +6,7 @@ using Workshop.Common;
 
 namespace Workshop.CSharp.Objectivity.ExercisesB
 {
-    //[TestClass]
+    [TestClass]
     public class ObjectivityExercises
     {
         /// <summary>

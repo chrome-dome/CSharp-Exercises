@@ -6,7 +6,7 @@ using Workshop.Common;
 
 namespace Workshop.CSharp.CSharp2.ExercisesB_
 {
-//    [TestClass]
+    [TestClass]
     public class IteratorsExercises
     {
         private string SolutionFolder  { get {  return Environment.CurrentDirectory.Replace(@"\bin\Debug",""); } }

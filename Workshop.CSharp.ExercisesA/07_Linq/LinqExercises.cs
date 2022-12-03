@@ -8,7 +8,7 @@ using Workshop.Common;
 
 namespace Workshop.CSharp.CSharp3.ExercisesB
 {
-    //[TestClass]
+    [TestClass]
     public class LinqExercises
     {
         // Uwagi:

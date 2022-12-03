@@ -5,7 +5,7 @@ using Workshop.Common;
 
 namespace Workshop.CSharp.EntityFramework.ExercisesB
 {
-//    [TestClass]
+    [TestClass]
     public class EntityFrameworkExercises
     {
         /// <summary>
