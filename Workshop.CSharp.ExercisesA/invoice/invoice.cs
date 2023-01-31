@@ -5,6 +5,8 @@ using NUnit.Framework.Constraints;
 using Workshop.Common;
 using Workshop.CSharp.ExercisesA.invoice;
 
+//Bussiness logic - first step
+
 
 //Klient posiada sklep z ubraniami, chcemy zaprojektować mu system do wysyłanie faktur i zarządzania magazynem (zacznijmy od faktury :) ):
 
@@ -45,6 +47,7 @@ namespace Workshop.CSharp.ExercisesA.invoice
         public List<Item> Items { get; private set; } = new List<Item>();
         public DateTime CreationDate { get; set; }
         public DateTime PaymentDate { get; set; }
+
 
         private int _invoiceNumber;
         public int InvoiceNumber
