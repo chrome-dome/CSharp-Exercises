@@ -22,7 +22,6 @@
   <ItemGroup>
     <None Remove="invoice\" />
     <None Remove="hospital\" />
-    <None Remove="xAlgExercises\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Data\SampleData\Categories.xml">
@@ -35,6 +34,5 @@
   <ItemGroup>
     <Folder Include="invoice\" />
     <Folder Include="hospital\" />
-    <Folder Include="xAlgExercises\" />
   </ItemGroup>
 </Project>
